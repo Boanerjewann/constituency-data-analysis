@@ -4,7 +4,7 @@ import argparse
 # Load dataset
 df = pd.read_csv("data/sample_meghalaya_constituency_data.csv")
 
-# ----------- FUNCTIONS -----------
+# ----------- FUNCTIONS ----------
 
 def get_benchmark(value, state_avg, region_avg):
     result = ""

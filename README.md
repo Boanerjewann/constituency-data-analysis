@@ -89,7 +89,7 @@ Features:
 
 2. Navigate through sheets:
    - Summary statistics  
-   - Section1 to S2-Q4 analysis
+   - Section1 to Section 2 Analysis
    - Dashboard  
 
 3. Use slicers to interactively filter data  

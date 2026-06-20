@@ -1,12 +1,13 @@
 # Meghalaya Constituency Data Analysis
 
 ## Overview
-This project analyses constituency level development data in Meghalaya using Microsoft Excel. The analysis focuses on regional disparities, infrastructure, scheme delivery, and fund utilisation patterns across constituencies.
+This project analyses constituency level development data in Meghalaya using Microsoft Excel and Python. The analysis focuses on regional disparities, infrastructure, scheme delivery, and fund utilisation patterns across constituencies.
 
 ---
 
 ## Tools Used
-- Microsoft Excel for data analysis, visualisations, and dashboard creation
+- Microsoft Excel for data analysis, visualisations, and dashboard creation  
+- Python (pandas, argparse) for the constituency profile generator  
 
 ---
 
@@ -18,7 +19,8 @@ This project analyses constituency level development data in Meghalaya using Mic
 - Created derived metrics:
   - Infrastructure Index
   - Welfare Dependency  
-  - Low Fund Utilisation Flag
+  - Low Fund Utilisation Flag  
+
 ---
 
 ### Section 2: Analytical Insights
@@ -30,7 +32,30 @@ This project analyses constituency level development data in Meghalaya using Mic
 ---
 
 ### Section 3: Profile Generator
-- Not implemented in Python 
+A Python based command line script was developed to generate structured constituency reports.
+
+**Script location:** `src/profile_generator.py`
+
+**Features:**
+- Accepts input using:
+  - Constituency name
+  - Constituency ID  
+- Generates a formatted profile including:
+  - Constituency snapshot (region, district, electorate, occupation, literacy)
+  - Scheme performance (MGNREGS, PM Awas, JJM, PM-KISAN)
+  - Infrastructure indicators (roads, connectivity, health, education)
+- Performs benchmarking:
+  - Compares each indicator with state and regional averages
+  - Uses clear indicators (↑ above, ↓ below, = at average)
+- Flags low fund utilisation (below 60%)
+- Supports saving output to a text file
+
+**Example usage:**
+
+python src/profile_generator.py --constituency "Jowai"
+python src/profile_generator.py --id MH029
+python src/profile_generator.py --constituency "Jowai" --output reports/jowai_profile.txt
+
 
 ---
 
@@ -40,7 +65,7 @@ An interactive dashboard was created in Excel using pivot tables and slicers to 
 Filters available:
 - Region  
 - District  
-- Primary Occupation
+- Primary Occupation  
 
 Key indicators displayed:
 - Voter Turnout percentage  
@@ -53,37 +78,44 @@ Key indicators displayed:
 Features:
 - Side by side comparison of key indicators  
 - Identification of top and bottom performing constituencies  
-- Dynamic filtering based on region and district  
+- Dynamic filtering based on region, district, and occupation  
 
 ---
 
 ## How to Use
 
-1. Open the Excel file in `notebooks/Boanerjes_Wann_finished_report_meghalaya_constituency_data.xlsx`  
-2. Navigate through the sheets:
-   - Summary statistics
-   - Section1 to S2-Q4 analysis
+1. Open the Excel file in  
+   `notebooks/Boanerjes_Wann_finished_report_meghalaya_constituency_data.xlsx`  
+
+2. Navigate through sheets:
+   - Summary statistics  
+   - Section 1 to S2-Q4 analysis  
    - Dashboard  
-3. Use the slicers in the dashboard to filter by region and district and Primary Occupation
+
+3. Use slicers to interactively filter data  
+
+4. For Python script:
+   - Run from project root using command line  
+   - Provide constituency name or ID  
 
 ---
 
 ## Assumptions
 - Infrastructure Index gives equal weight to roads, water access, and connectivity  
 - Welfare Dependency combines poverty levels with MGNREGS intensity  
-- Regional averages are used for overall comparison  
+- Regional averages are used for comparative benchmarking  
 
 ---
 
 ## Limitations
-- Analysis is fully Excel based and semi automated by converting raw data into table 
-- Limited to the indicators available in the dataset  
-- No advanced statistical or predictive modelling has been applied  
+- Analysis is primarily Excel based with limited automation  
+- Limited to available indicators in the dataset  
+- No advanced statistical or predictive modelling  
 
 ---
 
 ## Future Improvements
-- Develop a Python based profile generator  
-- Build a more advanced dashboard using Power BI or Streamlit  
-- Include more socio economic indicators for deeper insights  
-- Apply statistical methods or machine learning for predictive analysis  
+- Extend the Python script for automated batch profile generation  
+- Build an interactive web based dashboard using Streamlit or Power BI  
+- Include additional socio economic and governance indicators  
+- Apply predictive modelling and advanced analytics  
